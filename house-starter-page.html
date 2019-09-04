@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="description" content="pagina creada en el curso de FullStack">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Transparent Government in Fact - House</title>
+
+    <link href="https://fonts.googleapis.com/css?family=Kalam" rel="stylesheet">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <link rel="stylesheet" href="css/estilos.css">
+
+</head>
+    
+<body>
+    <div class="container-fluid" id="app">
+        <header class="row">
+                <div class="col-xs-12 col-sm-5">
+                    <img class="logo" src="img/TGIF_logo.jpg" alt="Logo TGIF"><span class="title">&#32;TGIF</span>
+                </div>
+                <div class="col-xs-12 col-sm-7 text-right">
+                    <img class="sobre" src="img/email.jpg" alt="Logo TGIF">
+                    <a class="email" href="mailto:info@tgif.net?subject=Reaching%20Out&body=How%20are%20you">info@tgif.net</a>
+                </div>
+        </header>
+
+        <div class="row">
+            <div class="col-xs-12">
+                <div class="navigate">
+                        <a class="btn btn-default" href="home-starter-page.html"  transition="flip">Home</a>
+                        <div class="btn-group">
+                            <button type="button" class="btn btn-default dropdown-toggle"
+                                data-toggle="dropdown" aria-expanded="true">
+                                Congress 113
+                                <span class="caret"></span>
+                            </button>
+                                <ul class="dropdown-menu">
+                                    <li><a href="house-starter-page.html"  transition="flip">House</a></li>
+                                    <li><a class="pagesLink" href="senate-starter-page.html"  transition="flip">Senate</a></li>
+                                </ul>
+                        </div>
+                        <div class="btn-group">
+                            <button type="button" class="btn btn-default dropdown-toggle"
+                                data-toggle="dropdown" aria-expanded="true">
+                                Attendance
+                                <span class="caret"></span>
+                            </button>
+                                <ul class="dropdown-menu">
+                                    <li><a href="house-attendance.html">House</a></li>
+                                    <li><a class="pagesLink" href="senate-attendance.html">Senate</a></li>
+                                </ul>
+                        </div>
+                        <div class="btn-group">
+                            <button type="button" class="btn btn-default dropdown-toggle"
+                                data-toggle="dropdown" aria-expanded="true">
+                                Party Loyalty
+                                <span class="caret"></span>
+                            </button>
+                                <ul class="dropdown-menu">
+                                    <li><a href="house-party-loyalty.html">House</a></li>
+                                    <li><a class="pagesLink" href="senate-party-loyalty.html">Senate</a></li>
+                                </ul>
+                        </div>
+                </div> <!-- Fin Navigate -->
+            </div>
+        </div> <!-- Fin row -->  
+        
+        <div class="container-fluid">
+            <div class="col-xs-12 col-sm-10">
+            <h2>Congressmen</h2>
+            <p>The major power of the House is to pass federal legislation that affects the entire country, although its bills must also be passed by the Senate and further agreed to by the U.S. President before becoming law (unless both the House and Senate re-pass the legislation with a two-thirds majority in each chamber). The House has some exclusive powers: the power to initiate revenue bills, to impeach officials (impeached officials are subsequently tried in the Senate), and to elect the U.S. President in case there is no majority in the Electoral College.</p>
+            <p>Each U.S. state is represented in the House in proportion to its population as measured in the census, but every state is entitled to at least one representative. </p>
+            </div>
+            <div class="col-xs-12 col-sm2">
+            </div>
+        </div>
+        
+        <div class="container-fluid">
+            <div id="chqkboxName" class="col-xs-12 col-sm-7" >
+                Filter by Party:
+                <input type="checkbox" name="selParty" value="D" onchange="updateUI()" checked>Democrat
+                <input type="checkbox" name="selParty" value="R" onchange="updateUI()" checked>Republican
+                <input type="checkbox" name="selParty" value="I" onchange="updateUI()" checked>Independent
+            </div>
+            <div class="col-xs-12 col-sm-5">
+                <form >
+                    Filter by State:
+                    <select id="states" onchange="updateUI()"> 
+                        <option value="">ALL States</option>
+                        <option v-for="state in states" value: state>{{state}}</option>
+                    </select> 
+                </form>
+            </div>
+        </div>
+
+        <div class="container-fluid">
+            <div class="col-xd-12">
+                <table class="table" id= "jsonData">
+                    <thead>
+                        <tr>
+                            <th>Full Name</th>
+                            <th>Party</th>
+                            <th>State</th>
+                            <th>Years in Office</th>
+                            <th>Percentage</th>
+                        </tr>
+                    </thead>
+                    <tbody class="deGaby">
+                        <tr v-for="person in candidates">
+                            <td class="link"><a v-bind:href="person.url" target="_blank">{{person.first_name}} {{person.middle_name}} {{person.last_name}}</a></td>
+                            <td class="buscaParty">{{person.party}}</td>
+                            <td class="buscaState">{{person.state}}</td>
+                            <td>{{person.seniority}}</td>
+                            <td>{{person.votes_with_party_pct}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>    
+
+        <footer class="container-fluid">
+            <div>
+                <h4>&copy; 2016 TGIF | All Rights Reserved</h4>
+            </div>
+        </footer>
+
+    </div> <!-- FIN MAIN CONTAINER -->
+        
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>
+    <script>var opc = "house"</script>
+    <script src="js/main.js"></script>
+
+</body>
+</html>

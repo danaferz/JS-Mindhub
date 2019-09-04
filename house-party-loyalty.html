@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="description" content="pagina creada en el curso de FullStack">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Transparent Government in Fact - House</title>
+
+    <link href="https://fonts.googleapis.com/css?family=Kalam" rel="stylesheet">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <link rel="stylesheet" href="css/estilos.css">
+
+</head>
+
+<body>
+    <div class="container-fluid" id="app"> <!-- COMIENZO MAIN CONTAINER -->
+        <header class="row">
+                <div class="col-xs-12 col-sm-5">
+                    <img class="logo" src="img/TGIF_logo.jpg" alt="Logo TGIF"><span class="title">&#32;TGIF</span>
+                </div>
+                <div class="col-xs-12 col-sm-7 text-right">
+                    <img class="sobre" src="img/email.jpg" alt="Logo TGIF">
+                    <a class="email" href="mailto:info@tgif.net?subject=Reaching%20Out&body=How%20are%20you">info@tgif.net</a>
+                </div>
+        </header>
+
+        <div class="row">
+            <div class="col-xs-12">
+                <div class="navigate">
+                        <a class="btn btn-default" href="home-starter-page.html">Home</a>
+                        <div class="btn-group">
+                            <button type="button" class="btn btn-default dropdown-toggle"
+                                data-toggle="dropdown" aria-expanded="true">
+                                Congress 113
+                                <span class="caret"></span>
+                            </button>
+                                <ul class="dropdown-menu">
+                                    <li><a href="house-starter-page.html">House</a></li>
+                                    <li><a class="pagesLink" href="senate-starter-page.html">Senate</a></li>
+                                </ul>
+                        </div>
+                        <div class="btn-group">
+                            <button type="button" class="btn btn-default dropdown-toggle"
+                                data-toggle="dropdown" aria-expanded="true">
+                                Attendance
+                                <span class="caret"></span>
+                            </button>
+                                <ul class="dropdown-menu">
+                                    <li><a href="house-attendance.html">House</a></li>
+                                    <li><a class="pagesLink" href="senate-attendance.html">Senate</a></li>
+                                </ul>
+                        </div>
+                        <div class="btn-group">
+                            <button type="button" class="btn btn-default dropdown-toggle"
+                                data-toggle="dropdown" aria-expanded="true">
+                                Party Loyalty
+                                <span class="caret"></span>
+                            </button>
+                                <ul class="dropdown-menu">
+                                    <li><a href="house-party-loyalty.html">House</a></li>
+                                    <li><a class="pagesLink" href="senate-party-loyalty.html">Senate</a></li>
+                                </ul>
+                        </div>
+                </div> <!-- Fin Navigate -->
+            </div>
+        </div> <!-- Fin row -->  
+
+        <!--Table container-->
+        <div class="row"> <!-- Comienzo contenedor 1 -->
+            <div class="col-xs-12 col-sm-6">
+                <h2>Party Loyalty</h2>
+                <p>Those who consider themselves to be strong partisans, strong Democrats and strong Republicans respectively, tend to be the most faithful in voting for their party's nominee for office and legislation that backs their party's agenda.</p>
+            </div>
+            <div class="col-xs-12 col-sm-6">
+                <h3 class="alignRight">House at a glance</h3>
+                <table class="table tableBorder">
+                    <thead>
+                        <tr>
+                            <th>Party</th>
+                            <th>Number of Reps</th>
+                            <th>% Voted with Party</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Democrat</td>
+                            <td id="totD">{{ estadTotal.totD}}</td>
+                            <td id="totPorcD">{{ estadTotal.totPorcD}}</td>
+                        </tr>
+                        <tr>
+                            <td>Republican</td>
+                            <td id="totR">{{ estadTotal.totR}}</td>
+                            <td id="totPorcR">{{ estadTotal.totPorcR}}</td>
+                        </tr>
+                        <tr>
+                            <td>Independent</td>
+                            <td id="totI">{{ estadTotal.totI}}</td>
+                            <td id="totPorcI">{{ estadTotal.totPorcI}}</td>
+                        </tr>
+                        <tr>
+                            <td>Total</td>
+                            <td id="totales">{{ estadTotal.totales}}</td>
+                            <td id="totatesPorc">{{ estadTotal.totalPorc}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div> <!-- Fin contenedor 1 -->
+        </div>   
+        <hr>
+        <div class="row">  <!-- Comienzo contenedor 2 -->
+            <div class="col-xs-12 col-sm-6">
+                <h3>Least Loyal (Bottom 10% of Party)</h3>
+                <table class="table tableBorder" id= "jsonData">
+                    <thead>
+                        <tr>
+                            <th>Full Name</th>
+                            <th>Party Votes</th>
+                            <th>% Party</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr v-for="person in estadTotal.least_loyal">
+                            <td class="link"><a v-bind:href="person.url" target="_blank">{{person.first_name}} {{person.middle_name}} {{person.last_name}}</a></td>
+                            <td>{{person.total_votes}}</td>
+                            <td>{{person.votes_with_party_pct}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="col-xs-12 col-sm-6">
+                <h3>Most Loyal (Top 10% of Party)</h3>
+                <table class="table tableBorder" id= "jsonData">
+                    <thead>
+                        <tr>
+                            <th>Full Name</th>
+                            <th>Party Votes</th>
+                            <th>% Party</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr v-for="person in estadTotal.most_loyal">
+                            <td class="link"><a v-bind:href="person.url" target="_blank">{{person.first_name}} {{person.middle_name}} {{person.last_name}}</a></td>
+                            <td>{{person.total_votes}}</td>
+                            <td>{{person.votes_with_party_pct}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div> <!-- Fin contenedor 2 -->
+
+        <footer class="container-fluid">
+            <div>
+                <h4>&copy; 2016 TGIF | All Rights Reserved</h4>
+            </div>
+        </footer>
+
+    </div> <!-- FIN MAIN CONTAINER -->
+    
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>
+    <script>var opc = "house"</script>
+    <script src="js/main.js"></script>
+</body>
+</html>
