@@ -1,0 +1,148 @@
+
+header {
+  color: #5D5C61;
+}
+
+h2 {
+  color: #5D5C61; 
+  font-family: Helvetica, Arial, sans-serif;
+  font-size: 26px;
+  margin: 20px 0 10px;
+}
+
+p {
+  font-family: sans-serif;
+  font-size: 14px;
+  text-align: justify;
+  
+}
+
+h4{
+  font-size: 10px;
+  margin: 10px 130px 10px 130px;
+}
+
+aside img {
+  width: 90%;
+  margin-top: 70px;
+  margin-bottom: 10px;
+}
+
+footer {
+  background-color: #5D5C61;
+  color: #ffffff;
+  border: 1px solid #5D5C61;
+  text-align: center;
+  margin-top: 20px;
+}
+
+
+hr {
+  border: solid 1px #5D5C61;
+}
+
+.title {
+  font-family: Helvetica, Arial, sans-serif;
+  font-size: 25px;
+  text-shadow: 2px 2px #7395AE;
+}
+
+.logo {
+  height: 30px;
+  margin-top: 5px;
+  margin-bottom: 10px;
+}
+
+.sobre {
+  height: 15px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.navigate {
+  background-color: #5D5C61;
+  color: #ffffff;
+  border-radius: 3px;
+}
+
+.email:hover {
+  color: #5D5C61;
+}
+
+a.button {
+  text-decoration: underline;
+  color: blue;
+}
+
+.btn default {
+  background-color: #5D5C61;
+  border: none;
+  color: #ffffff;
+}
+
+.btn {
+  background-color: #5D5C61;
+  border: none;
+  color: #ffffff;
+}
+
+.callData {
+  padding-left: 5px;
+  padding-right: 5px;
+  border: solid 0.5px #5D5C61;
+
+}
+
+.callData:hover {
+  background-color: #7395AE;
+  cursor: pointer;
+}
+
+.alignLeft {
+  text-align: left;
+}
+
+.alignRight {
+  text-align: right;
+}
+
+/*tables style*/
+th {
+  font-size: 14px;
+  background-color: #557A95;
+  text-align: left;
+  color: #ffffff;
+}
+
+table {
+  text-align: left;
+}
+
+ /*statistics tables*/
+
+.tableBorder {
+  border: solid 1px #938e94;
+}
+
+.tableBorder th {
+  border: solid 1px grey;
+}
+
+.tableBorder td {
+  border: solid 1px grey;
+}
+
+/*links*/
+
+.link {
+  text-decoration-line: underline;
+  color: #7395AE;
+}
+
+.link:hover {
+  cursor: pointer;
+}
+
+a {
+  color: #557A95;
+}
